@@ -1,0 +1,102 @@
+<div class="col">
+  <h2 class="section-title">User details</h2>
+  <form #form03='ngForm' (ngSubmit)="createUser(form03)">
+    <mat-form-field class="full-width">
+      <input matInput
+             placeholder="Full Name"
+             ngModel
+             name='username'
+             #username="ngModel"
+             required minlength=4>
+       <mat-error *ngIf="username.invalid">
+         <mat-error *ngIf="username.dirty || username.touched"><span>{{getError()}}</span></mat-error>
+      </mat-error>
+    </mat-form-field>
+<!--     <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput
+            [type]="hide ? 'password' : 'text'"
+            ngModel
+            name='userpass'
+            #userpass="ngModel"
+            required pattern= '^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$'>
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="userpass.invalid">
+        <mat-error *ngIf="userpass.errors.required"><span>Can not be empty</span></mat-error>
+        <mat-error *ngIf="userpass.errors.pattern"><span>Not suited pattern</span></mat-error>
+      </mat-error>
+    </mat-form-field>
+ -->
+
+
+
+    <mat-form-field class="full-width">
+      <input matInput
+            [matDatepicker]="picker"
+            placeholder="Your birthday"
+            name="birthday"
+            #birthday='ngModel'
+            ngModel
+            required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="birthday.invalid">
+        <mat-error *ngIf="birthday.dirty || birthday.touched"><span>{{getError()}}</span></mat-error>
+     </mat-error>
+   </mat-form-field>
+
+
+    <mat-form-field class="full-width">
+      <mat-select placeholder="Gender"
+                  #gender = 'ngModel'
+                  name = 'gender'
+                  ngModel
+                  required>
+        <mat-option *ngFor="let gender of genders" [value]="gender">
+          {{ gender }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="gender.invalid">
+        <mat-error *ngIf="gender.dirty || gender.touched"><span>{{getError()}}</span></mat-error>
+     </mat-error>
+    </mat-form-field>
+
+
+    <div class="country_phone">
+      <mat-form-field>
+        <mat-select name="country" placeholder="Country">
+          <mat-option *ngFor="let country of countries" [value]="country">
+            {{ country.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="full-width col-8">
+        <input matInput placeholder="Phone" type="tel" name="phone" required>
+        <mat-hint align="start"><strong>Mobile:</strong> {{ userDetailsForm.value.country_phone.country.sampleMobilePhone }}</mat-hint>
+        <mat-hint align="end"><strong>Fixed:</strong> {{ userDetailsForm.value.country_phone.country.sampleFixedPhone }}</mat-hint>
+        <mat-error *ngFor="let validation of validation_messages.phone">
+          <mat-error class="error-message" class="error-message" *ngIf="userDetailsForm.get('country_phone').get('phone').hasError(validation.type) && (userDetailsForm.get('country_phone').get('phone').dirty || userDetailsForm.get('country_phone').get('phone').touched)">
+            {{ validation.message }}
+          </mat-error>
+        </mat-error>
+      </mat-form-field>
+    </div>
+<!--
+    <mat-form-field class="full-width">
+      <textarea matInput maxlength="256" placeholder="Bio" formControlName="bio" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>
+      <mat-hint align="start">Tell us about yourself</mat-hint>
+      <mat-hint align="end">{{userDetailsForm.get('bio').value.length}} / 256</mat-hint>
+      <mat-error *ngFor="let validation of validation_messages.bio">
+        <mat-error class="error-message" *ngIf="userDetailsForm.get('bio').hasError(validation.type) && (userDetailsForm.get('bio').dirty || userDetailsForm.get('bio').touched)">{{validation.message}}</mat-error>
+      </mat-error>
+    </mat-form-field>
+ -->
+
+
+    <button class="submit-btn" color="primary" mat-raised-button type="submit" [disabled]="!form03.valid">
+      Submit
+    </button>
+
+  </form>

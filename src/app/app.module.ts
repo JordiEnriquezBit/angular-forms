@@ -6,20 +6,29 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { HeaderComponent } from './header/header.component';
 import { Form01Component } from './forms/form01/form01.component';
+import { Form02Component } from './forms/form02/form02.component';
+import { Form03Component } from './forms/form03/form03.component';
+import { PasswordPatternDirective } from './shared/directives/password-pattern.directive';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    Form01Component
+    Form01Component,
+    Form02Component,
+    Form03Component,
+    PasswordPatternDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    MatNativeDateModule,
     MaterialModule
   ],
   providers: [],
