@@ -13,6 +13,7 @@ import { Form02Component } from './forms/form02/form02.component';
 import { Form03Component } from './forms/form03/form03.component';
 import { PasswordPatternDirective } from './shared/directives/password-pattern.directive';
 import { MatNativeDateModule } from '@angular/material/core';
+import { Form04Component } from './forms/form04/form04.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     Form01Component,
     Form02Component,
     Form03Component,
-    PasswordPatternDirective
+    PasswordPatternDirective,
+    Form04Component
   ],
   imports: [
     BrowserModule,
