@@ -1,4 +1,4 @@
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -23,13 +23,14 @@ import { Form04Component } from './forms/form04/form04.component';
     Form02Component,
     Form03Component,
     PasswordPatternDirective,
-    Form04Component
+    Form04Component,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     MatNativeDateModule,
     MaterialModule
   ],
